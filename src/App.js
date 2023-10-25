@@ -1,24 +1,24 @@
 import logo from './logo.svg';
-import './App.css';
+import CadastroEndereco from './pages/CadastroEndereco';
+import './global.css'
+import { router } from './routes';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import EditEndereco from './pages/EditEndereço';
+import { DataProvider } from './context/dataContext';
+import Map from './pages/Map';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+    <BrowserRouter>
+
+      <Routes>
+        <Route path='/cadastro' element={<CadastroEndereco/>}/>
+        <Route path='/edit' element={<EditEndereco/>}/>
+        <Route path='/map' element={<Map/>}/>
+      </Routes>
+    </BrowserRouter>
+    </DataProvider>
   );
 }
 
